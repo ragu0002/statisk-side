@@ -1,0 +1,92 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-rendering: optimizeLegibility;
+}
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+.categorylist {
+  display: grid;
+  gap: 1rem;
+  margin: 0 4rem 0 4rem;
+}
+.categorylist a {
+  text-decoration: none;
+  padding: 2em;
+  color: white;
+  background-color: rgb(234, 120, 190);
+}
+.categorylist a:hover {
+  background-color: rgb(231, 69, 169);
+}
+a {
+  border-radius: 10px;
+}
+.productlist main {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 290px));
+  gap: 2rem;
+}
+.productlist main h2 {
+  grid-column: 1/-1;
+}
+.productlist article h3 {
+  font-size: 1rem;
+  flex-grow: 3;
+}
+.productlist article > * {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  font-size: 0.9rem;
+}
+.subtle {
+  color: gray;
+}
+.productlist article {
+  display: flex;
+  flex-direction: column;
+}
+.productlist article.soldOut img {
+  opacity: 0.5;
+}
+.productlist article.soldOut::before {
+  content: "Sold Out";
+  position: absolute;
+  background: grey;
+  color: black;
+  padding: 1rem;
+}
+.productlist article .discounted .productlist article .price span {
+  display: none;
+}
+.productlist article.onSale .discounted {
+  display: flex;
+  justify-content: space-between;
+}
+.discounted > p {
+  margin-bottom: 0;
+}
+.productlist article.onSale .price span {
+  display: initial;
+}
+.productlist article button {
+  margin-top: auto;
+}
+.productlist article {
+  margin-bottom: 1rem;
+}
+.discounted p:last-child {
+  background: gray;
+  padding: 0.2rem;
+}
+@media (min-width: 1024px) {
+  .categorylist {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
