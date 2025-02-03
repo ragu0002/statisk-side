@@ -1,6 +1,9 @@
 let list_container = document.querySelector(".list_container");
+const getUrl = window.location.search;
+const getSearch = new URLSearchParams(getUrl);
+const categories = getSearch.get("categories");
 
-fetch(`https://kea-alt-del.dk/t7/api/products?limit=100/`).then((response) => response.json().then((data) => showList(data)));
+fetch(`https://kea-alt-del.dk/t7/api/products?category=${categories}`).then((response) => response.json().then((data) => showList(data)));
 
 function showList(products) {
   console.log(products);
@@ -21,7 +24,8 @@ function showList(products) {
           <p>Now DKK ${product.price},-</p>
           <p>-${product.discount}</p>
         </div>
-        <a href="product.html">Read More</a>
+        <p>${product.category}</p>
+        <a href="product.html?id=${product.id}">Read More</a>
       </article>
     `
     )

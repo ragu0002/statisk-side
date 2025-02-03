@@ -1,4 +1,4 @@
-let productId = 1526;
+let productId = new URLSearchParams(window.location.search).get("id");
 let product_container = document.querySelector(".product_container");
 console.log("siden vises");
 fetch(`https://kea-alt-del.dk/t7/api/products/${productId}`)
