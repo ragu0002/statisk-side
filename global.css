@@ -16,27 +16,15 @@ img {
 body {
   background-color: rgb(214, 223, 253);
 }
-@font-face {
-  font-family: under-oversrift;
-  font-style: normal;
-  font-weight: normal;
-  src: local("Helvetica"), url("Helvetica-Bold.woff") format("woff");
-}
 
 @font-face {
   font-family: text;
   font-style: normal;
   font-weight: normal;
 
-  src: local("Helvetica"), url("Helvetica.woff") format("woff");
+  src: local("Helvetica"), url(/fonts/Helvetica.woff) format("woff");
 }
 
-@font-face {
-  font-family: small-text-kursiv;
-  font-style: normal;
-  font-weight: normal;
-  src: url("../fonts/Helvetica-Oblique.woff") format("woff");
-}
 .rubik-puddles-regular {
   font-family: "Rubik Puddles", serif;
   font-weight: 400;
