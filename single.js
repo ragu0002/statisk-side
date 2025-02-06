@@ -6,18 +6,9 @@ fetch(`https://kea-alt-del.dk/t7/api/products/${productId}`)
   .then((data) => {
     product_container.innerHTML = `
       <main class="product_container " >
-        <ol class="breadcrumbs">
-          <li>
-            <a href="index.html">Home</a>
-          </li>
-          <li>
-            <a href="category.html">Brands</a>
-          </li>
-          <li>
-            <a href="productlist.html">${data.brandname} </a>
-          </li>
-          <li><b>${data.productdisplayname}</b></li>
-        </ol>
+       
+          <h2>${data.productdisplayname}</h2>
+  
         <div>
         <div class="img ${data.soldout && "soldOut"} ">
         <img src="https://kea-alt-del.dk/t7/images/webp/1000/${data.id}.webp" alt="<b>${data.productdisplayname}</b> "/>
@@ -26,7 +17,6 @@ fetch(`https://kea-alt-del.dk/t7/api/products/${productId}`)
     <div class="">
         <section class="purchaseBox">
 
-          <h3><b>${data.productdisplayname}</b></h3>
           <p>${data.brandname} | ${data.articletype}</p>
           <form>
             <label>
@@ -46,7 +36,7 @@ fetch(`https://kea-alt-del.dk/t7/api/products/${productId}`)
             <b>${data.productdisplayname}</b>
           </h2>
            <p class="price">
-          <span>Prev.</span> DKK ${data.price},-
+          <span>Prev.</span> DKK <span class="${data.discount ? "discount_price" : ""}"> ${data.price}</span>,-
         </p>
         <div class="no_discount grid_1-1 ${data.discount ? "yes_discount" : ""}">
       <p>Now DKK ${data.discount ? (data.price * (1 - data.discount / 100)).toFixed(2) : data.price},-</p>
