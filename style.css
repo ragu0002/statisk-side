@@ -9,28 +9,30 @@ img {
   max-width: 100%;
   height: auto;
 }
+
 .categorylist {
   display: grid;
-  gap: 1rem;
-  margin: 0 4rem 0 4rem;
 }
 .categorylist a {
   text-decoration: none;
-  padding: 2em;
-  color: white;
-  background-color: rgb(234, 120, 190);
+  padding: 1em;
+  color: rgb(14, 7, 78);
+  border: solid 0.1rem var(--text);
+  border-radius: 50px;
 }
 .categorylist a:hover {
-  background-color: rgb(231, 69, 169);
+  scale: 1.05;
 }
-a {
-  border-radius: 10px;
-}
+
 .productlist main {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 290px));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 2rem;
+  width: 100%;
+  height: 100vh;
+  padding: 1vh 5vh 1vh 5vh;
 }
+
 .productlist main h2 {
   grid-column: 1/-1;
 }
@@ -45,7 +47,7 @@ a {
   font-size: 0.9rem;
 }
 .subtle {
-  color: gray;
+  color: rgb(128, 128, 128);
 }
 .productlist article {
   display: flex;
@@ -54,13 +56,24 @@ a {
 .productlist article.soldOut img {
   opacity: 0.5;
 }
+.productlist article.soldOut {
+  position: relative; /* Ensure the parent element is a positioning context for the ::before pseudo-element */
+}
+
 .productlist article.soldOut::before {
   content: "Sold Out";
   position: absolute;
-  background: grey;
+  top: 50%; /* Position vertically in the center */
+  left: 50%; /* Position horizontally in the center */
+  transform: translate(-50%, -50%); /* Adjust to center the element perfectly */
+  background: rgb(213, 77, 77);
   color: black;
   padding: 1rem;
+  font-size: 1.5rem; /* Optional: Adjust font size if needed */
+  font-weight: bold; /* Optional: Make the text bold */
+  text-align: center; /* Center the text inside the pseudo-element */
 }
+
 .productlist article .discounted .productlist article .price span {
   display: none;
 }
@@ -81,12 +94,77 @@ a {
   margin-bottom: 1rem;
 }
 .discounted p:last-child {
-  background: gray;
+  background: rgb(235, 98, 130);
   padding: 0.2rem;
 }
-@media (min-width: 1024px) {
-  .categorylist {
+.smallProduct {
+  border: solid var(--text);
+  padding: 2rem;
+  background-color: white;
+  border-radius: 60px;
+}
+.product_container .img.soldOut {
+  position: relative; /* Ensure the parent element is a positioning context for the ::before pseudo-element */
+}
+
+.product_container .img.soldOut::before {
+  content: "Sold Out";
+  position: absolute;
+  top: 50%; /* Position vertically in the center */
+  left: 50%; /* Position horizontally in the center */
+  transform: translate(-50%, -50%); /* Adjust to center the element perfectly */
+  background: rgb(213, 77, 77);
+  color: black;
+  padding: 1rem;
+  font-size: 1.5rem; /* Optional: Adjust font size if needed */
+  font-weight: bold; /* Optional: Make the text bold */
+  text-align: center; /* Center the text inside the pseudo-element */
+}
+.product_container .img.soldOut img {
+  opacity: 0.5;
+}
+.category_main {
+  display: grid;
+  gap: 10px;
+  padding: 2vh 5vh 2vh 5vh;
+}
+.no_discount {
+  visibility: hidden;
+}
+.yes_discount {
+  visibility: visible;
+}
+
+.info {
+  padding: 1rem;
+  margin: 0 auto;
+}
+.purchaseBox {
+  border: 1px solid var(--text);
+  color: var(---text);
+  padding: 1rem;
+  margin: 0 auto;
+  border-radius: 20px;
+}
+.grid_1-1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.mainNav {
+  margin: 5vh 0 5vh 0;
+}
+@media (min-width: 900px) {
+  .category_main {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .info {
+    order: 0;
+    margin: 0 auto;
+    padding: 0 10vh 0 10vh;
+  }
+  .purchaseBox {
+    order: 2;
+    margin: 0 auto;
   }
 }

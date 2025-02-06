@@ -8,11 +8,12 @@ fetch(`https://kea-alt-del.dk/t7/api/products?category=${categories}`).then((res
 function showList(products) {
   console.log(products);
   const markup = products
+
     .map(
       (product) =>
         `
-      <article class="smallProduct onSale">
-        <img src="https://kea-alt-del.dk/t7/images/webp/640/${product.id}.webp" alt="Blue T20" />
+      <article class="smallProduct  ${product.soldout && "soldOut"}">
+        <img src="https://kea-alt-del.dk/t7/images/webp/640/${product.id}.webp" alt="${product.productdisplayname}" />
         <h3>
           <b>${product.productdisplayname}</b>
         </h3>
@@ -20,11 +21,11 @@ function showList(products) {
         <p class="price">
           <span>Prev.</span> DKK ${product.price},-
         </p>
-        <div class="discounted">
-          <p>Now DKK ${product.price},-</p>
-          <p>-${product.discount}</p>
-        </div>
-        <p>${product.category}</p>
+        <div class="no_discount discounted ${product.discount ? "yes_discount" : ""}">
+      <p>Now DKK ${product.discount ? (product.price * (1 - product.discount / 100)).toFixed(2) : product.price},-</p>
+      ${product.discount ? `<p>-${product.discount}%</p>` : ""}
+    </div>
+      
         <a href="product.html?id=${product.id}">Read More</a>
       </article>
     `
